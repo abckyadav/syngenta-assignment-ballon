@@ -3,11 +3,12 @@
 }
 
 .container {
-  border: 2px solid blue;
+  border: 2px solid black;
   width: 90%;
-  margin: 50px auto;
+  height: 630px;
+  margin: auto;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   gap: 15%;
 }
 
