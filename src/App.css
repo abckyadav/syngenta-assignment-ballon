@@ -28,8 +28,9 @@
 .empty_container {
   border: 2px solid green;
   padding: 50px;
+  width: 250px;
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
 }
 
 .input_container > input {
