@@ -1,65 +1,38 @@
 import React, { useState } from "react";
 import Balloons from "./Balloons";
-
-const getRandomColor = () => {
-  var letters = "0123456789ABCDEF".split("");
-  var color = "#";
-  for (var i = 0; i < 6; i++) {
-    color += letters[Math.round(Math.random() * 15)];
-  }
-  return color;
-};
-
-const initialballoons = [
-  {
-    id: 1,
-    color: getRandomColor(),
-    status: true,
-  },
-  {
-    id: 2,
-    color: getRandomColor(),
-    status: true,
-  },
-  {
-    id: 3,
-    color: getRandomColor(),
-    status: true,
-  },
-  {
-    id: 4,
-    color: getRandomColor(),
-    status: true,
-  },
-  {
-    id: 5,
-    color: getRandomColor(),
-    status: true,
-  },
-];
+import { initialballoons } from "../randomColor";
+import InputContainer from "./InputContainer";
 
 const Home = () => {
   const [balloons, setBalloons] = useState(initialballoons);
-  const [inputText, setInputText] = useState("");
+  const [inputText, setInputText] = useState();
 
   const handleInputChange = (e) => {
-    const text = e.target.value;
-    setInputText(text);
+    const text = Number(e.target.value);
+
+    if (text <= balloons.length) setInputText(text);
+    else alert("Please enter a number between 1 to 5");
   };
 
   const handleShoot = () => {
+    const validate = balloons.filter((item) => item.id === inputText);
+    console.log("validate:", validate);
+
+    if (validate[0].status === false) alert("Added Already");
+
     const newballoons = balloons.map((item) =>
       item.id == inputText ? { ...item, status: false } : item
     );
+
     setBalloons(newballoons);
-    console.log("newballoons:", newballoons);
+    setInputText("");
   };
+
   const handleEmptyBox = (id) => {
     const newballoons = balloons.map((item) =>
       item.id == id ? { ...item, status: true } : item
     );
     setBalloons(newballoons);
-    console.log("newballoons:", newballoons);
   };
 
   return (
@@ -94,14 +67,11 @@ const Home = () => {
 
         <div>
           <h1>Input Box</h1>
-          <div className="input_container">
-            <input
-              type="number"
-              placeholder="Enter number between 1 to 5 only"
-              onChange={handleInputChange}
-            />
-            <button onClick={handleShoot}>Shoot</button>
-          </div>
+
+          <InputContainer
+            handleInputChange={handleInputChange}
+            handleShoot={handleShoot}
+          />
         </div>
       </div>
     </div>

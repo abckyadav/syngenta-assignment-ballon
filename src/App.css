@@ -4,25 +4,31 @@
 
 .container {
   border: 2px solid blue;
-  width: 80%;
+  width: 90%;
   margin: 50px auto;
   display: flex;
+  justify-content: center;
   gap: 15%;
 }
 
 .ballon {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
   height: 100px;
   width: 100px;
   border-radius: 50%;
-  border: 1px solid red;
   text-align: center;
-  margin: 15%;
+  margin: 10px;
+  color: white;
 }
 
 .empty_container {
   border: 2px solid green;
-  width: 40%;
   padding: 50px;
+  display: flex;
+  flex-wrap: nowrap;
 }
 
 .input_container > input {

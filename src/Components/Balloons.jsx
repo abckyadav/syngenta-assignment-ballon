@@ -2,10 +2,12 @@ import React from "react";
 
 const Balloons = ({ bgColor, id }) => {
   return (
-    <div>
+    <div >
       <div
         className="ballon"
-        style={{ backgroundColor: bgColor, color: "white" }}
+        style={{
+          backgroundColor: bgColor,
+        }}
       >
         {id}
       </div>
